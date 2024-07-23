@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/',[PostController::class, 'index']);
 
+Route::get('/posts/{post}', [PostController::class , 'show']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
