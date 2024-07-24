@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="utf-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-       <title>Posts</title>
-        <!--Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nuito:200,600" rel="stylesheet">
-    </head>
-    <body>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
        <h1 class="title">
            {{ $post->title }}
        </h1>
@@ -18,7 +14,6 @@
            </div>
        </div>
        <div class="footer">
-           <a href="/">BACK</a>
+           <a href="/dashboard">BACK</a>
        </div>
-    </body>
-</html>
+</x-app-layout>
