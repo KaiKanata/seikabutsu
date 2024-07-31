@@ -42,4 +42,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+    
+    public function likes(){
+        return $this->belongsToMany('App\Models\Post','likes','user_id','post_id')->withTimestamps();
+    }
+    //この投稿に対してすでにいいねしたかどうかを判別する。
+    public function isLike($postId):bool
+    {
+        return $this->likes()->where('post_id',$postId)->exists();
+    }
+    //isLikeを使って、すでにlikeしたか確認した後、いいねする（重複させない）
+    public function like($postId)
+    {
+        if($this->isLike($postId)){
+            //すでにいいにしていたら何もしない。
+            }else{
+            $this->likes()->attach($postId);
+            }
+    }
+    //islikeを使って、すでにいいねしたか確認して、していたら解除する。
+    public function unlike($postId)
+    {
+        if($this->isLike($postId)){
+            $this->likes()->detach($postId);
+        }else{
+        }
+    }
 }

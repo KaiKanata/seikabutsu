@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/{post}/edit',[PostController::class, 'edit']);
     Route::put('/posts/{post}',[PostController::class, 'update']);
     Route::delete('/posts/{post}',[PostController::class,'delete']);
-
+    Route::post('/like/{postId}',[LikeController::class,'store'])->name('like');
+    Route::post('/unlike/{postId}',[LikeController::class, 'destroy'])->name('unlike');
+  
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

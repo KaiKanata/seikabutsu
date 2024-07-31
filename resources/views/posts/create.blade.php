@@ -17,6 +17,7 @@
                 <p class="body_error" style="color:red">{{ $errors->first('post.body') }}</p>
                 <input type="text" name="post[image_path]" placeholder="ImagePath">
             </div>
+            <input type="text" name="tag" placeholder="#"/>
             <input type="submit" value="store"/>
         </form>
         <div class="footer">

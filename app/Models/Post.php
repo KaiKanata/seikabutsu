@@ -21,5 +21,23 @@ class Post extends Model
     {
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class);
+    }
+    
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+    
+    public function users()
+    {
+        return $this->belongsToMany('App\Models_user','likes','post_id','user_id')->withTimestamps();
+    }
 }
 
