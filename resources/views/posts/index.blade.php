@@ -13,6 +13,10 @@
                     <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
                 <img src="{{ $post->image_path }}" alt="{{ $post->title }}">
+                {{--タグ機能--}}
+               <div>
+                   {{$post->tag->name}}
+               </div>
                 <p class='body'>{{ $post->body }}</p>
                 <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                     @csrf

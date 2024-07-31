@@ -16,6 +16,11 @@
                 <input type='text' name='post[body]' value="{{ $post->body }}">
                 <input type="text" name="post[image_path]" placeholder="ImagePath">
             </div>
+            @foreach($post->tags as $tag)
+                    <div class="caegories">
+                        {{ $tag->name }}
+                    </div>
+                @endforeach
             <input type="submit" value="store"/>
         </form>
         <div class="footer">
