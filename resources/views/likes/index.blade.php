@@ -19,7 +19,7 @@
                   @csrf
                   @method('POST')
                   <button type="submit" class="btn btn-danger">いいね解除</button>
-                  <a href="/likes/{{ $post->like }}">{{ $post->like }}</a>
+                  <a href="/likes/{{ $post->like->id }}">{{ $post->like->name }}</a>
               </form>
               @else
               <form action="{{ route('like',['postId' =>$post->id]) }}"method="POST">

@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-        <form action="/posts" method="POST">
+        <form action="/posts" method="POST" cnctype="multipart/form-data">
             @csrf
             <div class="title">
                 <h1>Bland Name</h1>
@@ -15,6 +15,9 @@
                 <h2>キャプション</h2>
                 <textarea name="post[body]" placeholder="かっこいい">{{ old('post.body') }}</textarea>
                 <p class="body_error" style="color:red">{{ $errors->first('post.body') }}</p>
+                <div class="image">
+                    <input type="file" name="image">
+                </div>
                 <input type="text" name="post[image_path]" placeholder="ImagePath">
             </div>
             <input type="text" name="tag" placeholder="#"/>

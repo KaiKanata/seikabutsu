@@ -9,6 +9,7 @@ use App\Models\like;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary;
 
 
 class PostController extends Controller
@@ -33,10 +34,11 @@ class PostController extends Controller
         
         $post = new Post();
         
+        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        dd($image_url);//がぞうのURLを画面に表示
+        
         $input = $request['post'];
-        if(empty($input['image_path'])){
-        $input['image_path'] = 'default_image.jpg';
-        }
+        
         
     
         $tag_name = $request['tag'];
